@@ -26,7 +26,6 @@ const StudentSchema = new mongoose.Schema({
   name: { type: String, required: true },
   studentId: { type: String, required: true, unique: true },
   collegeMail: { type: String, required: true },
-  branch: { type: String, required: true },
   ticketType: { type: String, required: true },
   otp: { type: String },
   checkedIn: { type: Boolean, default: false },
