@@ -24,7 +24,8 @@
         margin-bottom: 20px;
       }
       .logo img {
-        max-width: 150px;
+        max-width: 600px;
+        
       }
       .header {
         text-align: center;
@@ -53,12 +54,15 @@
         font-size: 14px;
         color: #666;
       }
+      
     </style>
   </head>
   <body>
     <div class="container">
       <div class="logo">
-        <img src='/server/public/logo.jpg' alt="TEDx VishnuInstitute" />
+        <img src='https://media-hosting.imagekit.io//8c868ae093244666/logo.jpg?Expires=1835359589&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=WYCufZcI~RJ~YWY8UO2MThZMvhGY~PnsqlUzRzyc~c0VGyVI3i1XwlH-3GdA-a7rpfm5YyrrXl5K6l-Dh7I7SX7zHAjm-0Ljd51Sw2VqS1tM7AvWoClSCXn6r-LmI5oe8CX8xD3DEvdX1nnMeWzGGgEjg3OwZ330HW-1Jb5hCrsnqVlRZ1ZUzJMvzYEegKx77XhTpytjh-ZymOp0Q1fjHg12j4wHTjBhlr6cWuXDJYg9N~KaYP8QhiDK4xDRMScC7oanhwSViJwI1loFiqKBIGb6yhugt6GuBWM0WW~X18oSxQJmGeuXYzcf5ci8syTeBx3ini6hbayaeTOX2M50bQ__
+        ' alt="TEDx VishnuInstitute" 
+         />
       </div>
       <div class="header">Thank You for Registering!</div>
       <div class="content">
@@ -68,7 +72,7 @@
           <span class="highlight">TEDx VishnuInstitute</span>!
         </p>
         <p><strong>Theme:</strong> Cosmic Connections</p>
-        <p><strong>Date & Time:</strong> March 1st, 9:00 AM to 3:00 PM</p>
+        <p><strong>Date & Time:</strong> March 1st, 8:30 AM to 3:30 PM</p>
         <p><strong>Organizer:</strong> Suraj Lankey</p>
         <p><strong>Ticket Type:</strong> {{ticketType}}</p>
         <p>
@@ -76,10 +80,6 @@
           <span class="highlight">{{otp}}</span>
         </p>
         <p><strong style="color: #d61a3c;">Attendee verification will begin at 8:30 AM, so please arrive on time to ensure a smooth check-in process.</strong></p>
-        <p>Please carry the following to the venue:</p>
-        <ul>
-          <li>ID Card (Must & Should)</li>
-        </ul>
         <div class="rules">
           <strong>Rules & Guidelines:</strong>
           <ul>
@@ -94,6 +94,9 @@
             </li>
             <li>
               Your OTP is valid for a single entry only. Sharing it with others will make you responsible for any misuse.
+            </li>
+            <li>
+              All attendees must carry their college ID card at the entrance for verification.
             </li>
           </ul>
         </div>
