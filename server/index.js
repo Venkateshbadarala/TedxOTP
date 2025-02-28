@@ -60,7 +60,7 @@ async function sendOtpEmails(students) {
       await transporter.sendMail({
         from: process.env.EMAIL_USER,
         to: student.collegeMail,
-        subject: "Your OTP for TEDx VishnuInstitute Verification",
+        subject: "Your Ticket for TEDx Vishnu Institute!",
         html: htmlContent,
       });
 
