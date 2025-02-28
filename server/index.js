@@ -28,6 +28,7 @@ const StudentSchema = new mongoose.Schema({
   collegeMail: { type: String, required: true },
   ticketType: { type: String, required: true },
   otp: { type: String },
+  emailStatus:{type: Boolean, default: false },
   checkedIn: { type: Boolean, default: false },
 });
 
@@ -45,7 +46,6 @@ const transporter = nodemailer.createTransport({
 const emailTemplatePath = path.join(__dirname, "template", "Otpcontent.html");
 const emailTemplate = fs.readFileSync(emailTemplatePath, "utf8");
 
-// Function to send OTP emails
 async function sendOtpEmails(students) {
   try {
     for (let student of students) {
@@ -53,9 +53,9 @@ async function sendOtpEmails(students) {
 
       // Replace placeholders with actual data
       const htmlContent = emailTemplate
-      .replace(/{{name}}/g, student.name)
-      .replace(/{{otp}}/g, student.otp)
-      .replace(/{{ticketType}}/g, student.ticketType);
+        .replace(/{{name}}/g, student.name)
+        .replace(/{{otp}}/g, student.otp)
+        .replace(/{{ticketType}}/g, student.ticketType);
 
       await transporter.sendMail({
         from: process.env.EMAIL_USER,
@@ -65,6 +65,9 @@ async function sendOtpEmails(students) {
       });
 
       console.log(`📧 OTP Sent to ${student.collegeMail}`);
+
+      // Update emailStatus to true after sending email
+      await Student.updateOne({ _id: student._id }, { emailStatus: true });
     }
   } catch (error) {
     console.error("❌ Error sending OTP emails:", error);
@@ -127,7 +130,7 @@ app.get("/fetch-students", async (req, res) => {
 app.get("/send-otp", async (req, res) => {
   try {
     console.log("📩 Sending OTPs...");
-    const students = await Student.find({});
+    const students = await Student.find({ emailStatus: false }); // Send only to those who haven't received
     if (!students.length) return res.status(404).json({ message: "No students found." });
 
     await sendOtpEmails(students);
