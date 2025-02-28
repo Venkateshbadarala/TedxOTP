@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./App.css"; 
 
 function App() {
   const [otp, setOtp] = useState("");
@@ -36,26 +37,29 @@ function App() {
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
+    <div className="container">
       <h1>Student Verification</h1>
-      <button onClick={fetchStudents} style={{ margin: "10px", padding: "10px" }}>Fetch Students</button>
-      <button onClick={sendOtp} style={{ margin: "10px", padding: "10px" }}>Send OTP</button>
-      
-      <div>
+
+      <div className="button-group">
+        <button onClick={fetchStudents} className="button fetch">Fetch Students</button>
+        <button onClick={sendOtp} className="button send">Send OTP</button>
+      </div>
+
+      <div className="input-group">
         <input
           type="text"
           placeholder="Enter OTP"
           value={otp}
           onChange={(e) => setOtp(e.target.value)}
-          style={{ padding: "10px", margin: "10px" }}
+          className="input"
         />
-        <button onClick={verifyOtp} style={{ padding: "10px" }}>Verify OTP</button>
+        <button onClick={verifyOtp} className="button verify">Verify OTP</button>
       </div>
 
-      {message && <p>{message}</p>}
+      {message && <p className="message">{message}</p>}
 
       {student && (
-        <div>
+        <div className="student-details">
           <h2>Student Details</h2>
           <p><strong>Name:</strong> {student.name}</p>
           <p><strong>Student ID:</strong> {student.studentId}</p>

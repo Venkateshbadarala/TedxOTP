@@ -88,11 +88,10 @@ app.get("/fetch-students", async (req, res) => {
     const studentsData = [];
 
     for (let row of response.data.values) {
-      const name = row[1]?.trim() || "Unknown";
-      const studentId = row[2]?.trim();
-      const collegeMail = row[3]?.trim() || "Unknown";
-      const branch = row[6]?.trim() || "Unknown";
-      const ticketType = row[7]?.trim() || "Unknown";
+      const name = row[0]?.trim() || "Unknown";
+      const studentId = row[1]?.trim();
+      const collegeMail = row[2]?.trim() || "Unknown";
+      const ticketType = row[3]?.trim() || "Unknown";
 
       if (!studentId || !collegeMail) continue;
 
@@ -104,7 +103,6 @@ app.get("/fetch-students", async (req, res) => {
           name,
           studentId,
           collegeMail,
-          branch,
           ticketType,
           otp,
         });

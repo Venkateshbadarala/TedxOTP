@@ -1,0 +1,109 @@
+/* General Styles */
+body {
+    background-color: #1e1e2f;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Container */
+  .container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+
+   
+  }
+  
+  /* Headings */
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Buttons */
+  .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .fetch {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .fetch:hover {
+    background-color: #0056b3;
+  }
+  
+  .send {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .send:hover {
+    background-color: #1e7e34;
+  }
+  
+  .verify {
+    background-color: #ffc107;
+    color: black;
+  }
+  
+  .verify:hover {
+    background-color: #e0a800;
+  }
+  
+  /* Input */
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .input {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+  }
+  
+  /* Message */
+  .message {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #f8d7da;
+  }
+  
+  /* Student Details */
+  .student-details {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #3b3b52;
+    border-radius: 8px;
+  }
+  
+  .student-details h2 {
+    color: #17a2b8;
+    margin-bottom: 10px;
+  }
+  
