@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TEDx VishnuInstitute Confirmation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 600px;
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: auto;
+      }
+      .logo {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .logo img {
+        max-width: 150px;
+      }
+      .header {
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        color: #d61a3c;
+      }
+      .content {
+        font-size: 16px;
+        line-height: 1.5;
+        color: #333;
+      }
+      .highlight {
+        font-weight: bold;
+        color: #d61a3c;
+      }
+      .rules {
+        background: #f8f8f8;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
+      .footer {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 14px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">
+        <img src='/server/public/logo.jpg' alt="TEDx VishnuInstitute" />
+      </div>
+      <div class="header">Thank You for Registering!</div>
+      <div class="content">
+        <p>Dear <span class="highlight">{{name}}</span>,</p>
+        <p>
+          We are thrilled to welcome you to
+          <span class="highlight">TEDx VishnuInstitute</span>!
+        </p>
+        <p><strong>Theme:</strong> Cosmic Connections</p>
+        <p><strong>Date & Time:</strong> March 1st, 9:00 AM to 3:00 PM</p>
+        <p><strong>Organizer:</strong> Suraj Lankey</p>
+        <p><strong>Ticket Type:</strong> {{ticketType}}</p>
+        <p>
+          <strong>Your Unique Code (OTP):</strong>
+          <span class="highlight">{{otp}}</span>
+        </p>
+        <p><strong style="color: #d61a3c;">Attendee verification will begin at 8:30 AM, so please arrive on time to ensure a smooth check-in process.</strong></p>
+        <p>Please carry the following to the venue:</p>
+        <ul>
+          <li>ID Card (Must & Should)</li>
+        </ul>
+        <div class="rules">
+          <strong>Rules & Guidelines:</strong>
+          <ul>
+            <li>
+              Attendees must wear formal attire to maintain the event’s professional atmosphere.
+            </li>
+            <li>
+              Please keep your phones on silent mode to avoid disruptions during the sessions.
+            </li>
+            <li>
+              Wristbands provided at the entrance must be worn at all times during the event.
+            </li>
+            <li>
+              Your OTP is valid for a single entry only. Sharing it with others will make you responsible for any misuse.
+            </li>
+          </ul>
+        </div>
+        <p>Looking forward to an inspiring event together!</p>
+        <p>Thanks and Regards,<br />Team TEDx VishnuInstitute</p>
+      </div>
+      <div class="footer">
+        © 2025 TEDx VishnuInstitute. All Rights Reserved.
+      </div>
+    </div>
+  </body>
+</html>

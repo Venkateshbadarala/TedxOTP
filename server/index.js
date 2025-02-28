@@ -6,7 +6,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const crypto = require("crypto");
 const axios = require("axios");
-
+const fs = require("fs");
+const path = require("path");
 const app = express();
 
 // CORS Configuration
@@ -16,10 +17,7 @@ app.use(bodyParser.json());
 
 // MongoDB Connection
 mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB Connected!"))
   .catch((err) => console.log("❌ MongoDB Connection Error:", err));
 
@@ -44,6 +42,35 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASS,
   },
 });
+
+const emailTemplatePath = path.join(__dirname, "template", "Otpcontent.html");
+const emailTemplate = fs.readFileSync(emailTemplatePath, "utf8");
+
+// Function to send OTP emails
+async function sendOtpEmails(students) {
+  try {
+    for (let student of students) {
+      if (!student.otp) continue;
+
+      // Replace placeholders with actual data
+      const htmlContent = emailTemplate
+        .replace("[Attendee Name]", student.name)
+        .replace("[Your Unique Code]", student.otp)
+        .replace("[Combo/Individual]", student.ticketType);
+
+      await transporter.sendMail({
+        from: process.env.EMAIL_USER,
+        to: student.collegeMail,
+        subject: "Your OTP for TEDx VishnuInstitute Verification",
+        html: htmlContent,
+      });
+
+      console.log(`📧 OTP Sent to ${student.collegeMail}`);
+    }
+  } catch (error) {
+    console.error("❌ Error sending OTP emails:", error);
+  }
+}
 
 // Fetch students from Google Sheets and generate OTP
 app.get("/fetch-students", async (req, res) => {
@@ -100,23 +127,13 @@ app.get("/fetch-students", async (req, res) => {
   }
 });
 
-// Send OTP via Email
 app.get("/send-otp", async (req, res) => {
   try {
     console.log("📩 Sending OTPs...");
     const students = await Student.find({});
     if (!students.length) return res.status(404).json({ message: "No students found." });
 
-    for (let student of students) {
-      if (!student.otp) continue;
-      await transporter.sendMail({
-        from: process.env.EMAIL_USER,
-        to: student.collegeMail,
-        subject: "Your OTP for Verification",
-        html: `<p>Hello ${student.name},</p><p>Your OTP is: <strong>${student.otp}</strong></p>`
-      });
-      console.log(`📧 OTP Sent to ${student.collegeMail}`);
-    }
+    await sendOtpEmails(students);
 
     res.status(200).json({ message: "OTPs sent successfully!" });
   } catch (error) {
