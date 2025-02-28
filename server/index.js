@@ -54,9 +54,9 @@ async function sendOtpEmails(students) {
 
       // Replace placeholders with actual data
       const htmlContent = emailTemplate
-        .replace("[Attendee Name]", student.name)
-        .replace("[Your Unique Code]", student.otp)
-        .replace("[Combo/Individual]", student.ticketType);
+      .replace(/{{name}}/g, student.name)
+      .replace(/{{otp}}/g, student.otp)
+      .replace(/{{ticketType}}/g, student.ticketType);
 
       await transporter.sendMail({
         from: process.env.EMAIL_USER,
