@@ -8,7 +8,7 @@ function App() {
 
   const fetchStudents = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/fetch-students");
+      const response = await axios.get("https://tedxotp.onrender.com/fetch-students");
       console.log(response.data.message);
     } catch (error) {
       console.error("Error fetching students:", error);
@@ -17,7 +17,7 @@ function App() {
 
   const sendOtp = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/send-otp");
+      const response = await axios.get("https://tedxotp.onrender.com/send-otp");
       console.log(response.data.message);
     } catch (error) {
       console.error("Error sending OTP:", error);
@@ -26,7 +26,7 @@ function App() {
 
   const verifyOtp = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/get-student", { otp });
+      const response = await axios.post("https://tedxotp.onrender.com/get-student", { otp });
       setStudent(response.data.student);
       setMessage(response.data.message);
     } catch (error) {
